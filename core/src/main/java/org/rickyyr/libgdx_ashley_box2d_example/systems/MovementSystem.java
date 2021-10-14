@@ -27,7 +27,7 @@ public class MovementSystem extends IteratingSystem {
     entityBody = transformMapper.get(entity).body;
     MovementComponent movementComponent = this.movementMapper.get(entity);
 
-    entityBody.setLinearVelocity(movementComponent.force);
+    entityBody.setLinearVelocity(movementComponent.force.x / deltaTime , movementComponent.force.y / deltaTime);
 
     }
 }

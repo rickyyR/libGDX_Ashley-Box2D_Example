@@ -57,7 +57,7 @@ public class EntityFactory {
     Entity entity = new Entity();
 
     MovementComponent movementComponent = new MovementComponent();
-    movementComponent.force.x = -20;
+    movementComponent.force.x = -1;
     movementComponent.force.y = 0;
     entity.add(movementComponent);
 
