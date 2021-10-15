@@ -42,13 +42,13 @@ public class InputReceiverSystem extends EntitySystem implements InputProcessor 
       playerBody.applyLinearImpulse(0,0.3f, playerBody.getWorldCenter().x, playerBody.getWorldCenter().y, true);
     }
     if(Gdx.input.isKeyPressed(Input.Keys.A)) {
-      forceCounter += 6 *  deltaTime;
+      forceCounter += 4 *  deltaTime;
     }
     if(Gdx.input.isKeyPressed(Input.Keys.S)) {
 
     }
     if(Gdx.input.isKeyPressed(Input.Keys.D)) {
-      forceCounter += 6 *  deltaTime;
+      forceCounter += 4 *  deltaTime;
     }
 
     if(Gdx.input.isKeyPressed(Input.Keys.P)) {
@@ -67,7 +67,7 @@ public class InputReceiverSystem extends EntitySystem implements InputProcessor 
       playerBody.setLinearVelocity(new Vector2(playerBody.getLinearVelocity().x,0));
     }
     if(keycode == Input.Keys.A) {
-      playerBody.applyLinearImpulse(0 - forceCounter,0.5f,playerBody.getWorldCenter().x,
+      playerBody.applyLinearImpulse(0 - forceCounter,2f,playerBody.getWorldCenter().x,
         playerBody.getWorldCenter().y, true);
       forceCounter = 0;
     }
@@ -75,7 +75,7 @@ public class InputReceiverSystem extends EntitySystem implements InputProcessor 
 
     }
     if(keycode == Input.Keys.D) {
-      playerBody.applyLinearImpulse(0 + forceCounter,5,playerBody.getWorldCenter().x,
+      playerBody.applyLinearImpulse(0 + forceCounter,2f,playerBody.getWorldCenter().x,
         playerBody.getWorldCenter().y, true);
       forceCounter = 0;
     }

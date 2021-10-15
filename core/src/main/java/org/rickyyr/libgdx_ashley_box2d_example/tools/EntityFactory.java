@@ -36,7 +36,6 @@ public class EntityFactory {
     bdef.type = BodyDef.BodyType.DynamicBody;
     transformComponent.body = world.createBody(bdef);
     transformComponent.body.createFixture(fdef);
-    transformComponent.body.setMassData(new MassData());
 
     entity.add(transformComponent);
 
@@ -59,7 +58,6 @@ public class EntityFactory {
     bdef.type = BodyDef.BodyType.DynamicBody;
     transformComponent.body = world.createBody(bdef);
     transformComponent.body.createFixture(fdef);
-    transformComponent.body.setMassData(new MassData());
     entity.add(transformComponent);
 
     GameManager.engine.addEntity(entity);
