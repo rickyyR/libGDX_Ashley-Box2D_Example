@@ -1,9 +1,7 @@
 package org.rickyyr.libgdx_ashley_box2d_example.systems;
 
 import com.badlogic.ashley.core.ComponentMapper;
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.ashley.core.Family;
-import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
@@ -11,7 +9,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import org.rickyyr.libgdx_ashley_box2d_example.MenuScreen;
 import org.rickyyr.libgdx_ashley_box2d_example.TopdownGame;
-import org.rickyyr.libgdx_ashley_box2d_example.components.IsPlayerComponent;
 import org.rickyyr.libgdx_ashley_box2d_example.components.TransformComponent;
 import org.rickyyr.libgdx_ashley_box2d_example.tools.GameManager;
 
@@ -20,7 +17,7 @@ import org.rickyyr.libgdx_ashley_box2d_example.tools.GameManager;
 // Note: This way of handling input is ok for this example but one should use a remapable setup for a game release.
 //------------------------------------------------------------------------------------------------------------------
 
-public class InputReceiverSystem extends IteratingSystem implements InputProcessor {
+public class InputReceiverSystem extends EntitySystem implements InputProcessor {
 
   ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
   private TopdownGame topdownGame;
@@ -28,18 +25,17 @@ public class InputReceiverSystem extends IteratingSystem implements InputProcess
   private float forceCounter = 0;
 
   public InputReceiverSystem(TopdownGame topdownGame) {
-    super(Family.all(IsPlayerComponent.class).get());
     init(topdownGame);
   }
 
   private void init(TopdownGame topdownGame) {
     this.topdownGame = topdownGame;
-    playerBody = transformMapper.get(GameManager.engine.getEntities().get(0)).body;
+    playerBody = transformMapper.get(GameManager.getPlayerEntity()).body;
     Gdx.input.setInputProcessor(this);
   }
 
   @Override
-  protected void processEntity(Entity entity, float deltaTime) {
+  public void update(float deltaTime) {
 
     if(Gdx.input.isKeyPressed(Input.Keys.W)) {
       playerBody.applyLinearImpulse(0,0.3f, playerBody.getWorldCenter().x, playerBody.getWorldCenter().y, true);
@@ -59,8 +55,6 @@ public class InputReceiverSystem extends IteratingSystem implements InputProcess
     if(Gdx.input.isKeyPressed(Input.Keys.P)) {
 
     }
-
-
   }
 
   @Override
@@ -91,7 +85,6 @@ public class InputReceiverSystem extends IteratingSystem implements InputProcess
       playerBody.setTransform(0,2,0);
       playerBody.setLinearVelocity(0,0);
     }
-
 
     return false;
   }

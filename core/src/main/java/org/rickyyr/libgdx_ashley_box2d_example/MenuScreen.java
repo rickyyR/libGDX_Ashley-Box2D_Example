@@ -6,13 +6,11 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import org.rickyyr.libgdx_ashley_box2d_example.tools.GameManager;
 
-//----------------------------------------------------------------------------------------------------------
-// The MenuScreen is independent of the World and Engine (for now) so it has its own render and input logic
-//----------------------------------------------------------------------------------------------------------
+//--------------------
+// Main menu screen
+//--------------------
 
 public class MenuScreen implements Screen {
 
@@ -51,7 +49,7 @@ public class MenuScreen implements Screen {
     this.batch.end();
 
     if (Gdx.input.isTouched()) {
-      this.game.setScreen(new GameScreen());
+      this.game.setScreen(new GameScreen(this.game));
       dispose();
     }
   }

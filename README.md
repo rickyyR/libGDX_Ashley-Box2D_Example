@@ -1,6 +1,9 @@
 # libGDX-Ashley-Box2D-EXAMPLE
 An example (mostly for myself) on how to structure a libGDX project with Ashley and Box2D.
 
+###Controls:
+Hold A or D to charge the ball, release to shoot. R to reset position.
+
 # [Components](https://github.com/rickyyR/libGDX-Ashley-Box2D-EXAMPLE/tree/master/core/src/main/java/org/rickyyr/libgdx_ashley_box2d_example/components)
 Data bags without any logic, used by systems.
 

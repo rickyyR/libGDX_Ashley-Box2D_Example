@@ -5,7 +5,28 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.math.Vector2;
 import org.rickyyr.libgdx_ashley_box2d_example.tools.GameManager;
 
+//------------------------------
+// The actual playing screen
+//------------------------------
+
 public class GameScreen implements Screen {
+
+  private TopdownGame topdownGame;
+
+  public GameScreen(TopdownGame topdownGame) {
+    this.init(topdownGame);
+  }
+
+  private void init(TopdownGame topdownGame) {
+    this.topdownGame = topdownGame;
+    topdownGame.setScreen(this);
+    GameManager.setupGame(topdownGame);
+  }
+
+  @Override
+  public void show() {
+
+  }
 
   @Override
   public void render(float delta) {
@@ -17,31 +38,32 @@ public class GameScreen implements Screen {
     // Update the engine
     GameManager.engine.update(Gdx.graphics.getDeltaTime());
     // Step the world. One could also step the world inside a system.
-    GameManager.world1.step(1/60f, 6, 2);
+    GameManager.world1.step(1 / 60f, 6, 2);
   }
 
   @Override
   public void resize(int width, int height) {
 
-    GameManager.viewport.update(width,height);
+    GameManager.viewport.update(width, height);
+  }
+
+  @Override
+  public void pause() {
+
+  }
+
+  @Override
+  public void resume() {
+
+  }
+
+  @Override
+  public void hide() {
+
   }
 
   @Override
   public void dispose() {
-    // Dispose the render systems contents (batch e.t.c)
     GameManager.dispose();
   }
-
-  @Override
-  public void pause() {}
-
-  @Override
-  public void resume() {}
-
-  @Override
-  public void hide() {}
-
-  @Override
-  public void show() {}
-
 }

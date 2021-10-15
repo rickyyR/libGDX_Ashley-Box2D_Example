@@ -8,15 +8,19 @@ import com.badlogic.gdx.physics.box2d.*;
 import org.rickyyr.libgdx_ashley_box2d_example.components.IsPlayerComponent;
 import org.rickyyr.libgdx_ashley_box2d_example.components.TransformComponent;
 
+//---------------------------------------------------------------------------------------------
+// This is a helper class for creating all the entities. It is used by GameManager.setupGame().
+//---------------------------------------------------------------------------------------------
+
 public class EntityFactory {
 
   private static BodyDef bdef = new BodyDef();
   private static FixtureDef fdef = new FixtureDef();
 
-  public static void createEntities(Engine engine) {
-    engine.addEntity(createPlayer(GameManager.world1, new Vector2(0,2)));
-    engine.addEntity(createFloor(GameManager.world1));
-    engine.addEntity(createGoal(GameManager.world1));
+  public static void createAllEntities(Engine engine, World world) {
+    engine.addEntity(createPlayer(world, new Vector2(0,2)));
+    engine.addEntity(createFloor(world));
+    engine.addEntity(createGoal(world));
   }
 
   public static Entity createPlayer(World world, Vector2 position) {

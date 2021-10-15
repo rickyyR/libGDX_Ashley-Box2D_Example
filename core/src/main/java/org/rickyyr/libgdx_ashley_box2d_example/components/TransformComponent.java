@@ -5,6 +5,4 @@ import com.badlogic.gdx.physics.box2d.Body;
 
 public class TransformComponent implements Component {
   public Body body;
-  public float rotation = 0.0f;
-  public boolean isHidden = false;
 }

@@ -5,7 +5,6 @@ import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import org.rickyyr.libgdx_ashley_box2d_example.components.TextureComponent;
 import org.rickyyr.libgdx_ashley_box2d_example.components.TransformComponent;
 import org.rickyyr.libgdx_ashley_box2d_example.tools.GameManager;
 
@@ -20,11 +19,7 @@ public class RenderSystem extends IteratingSystem {
   private Box2DDebugRenderer debugRenderer = new Box2DDebugRenderer();
   private ArrayList<Entity> renderQueue = new ArrayList<>();
 
-  private ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
-
-
-  public RenderSystem() {super(Family.one(TransformComponent.class, TextureComponent.class).get());}
-
+  public RenderSystem() {super(Family.one(TransformComponent.class).get());}
 
   @Override
   public void processEntity(Entity entity, float deltaTime) {renderQueue.add(entity);}
