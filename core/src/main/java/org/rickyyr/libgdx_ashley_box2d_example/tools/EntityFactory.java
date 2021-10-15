@@ -26,13 +26,15 @@ public class EntityFactory {
 
     TransformComponent transformComponent = new TransformComponent();
     CircleShape shape = new CircleShape();
-    shape.setRadius(0.5f);
+    shape.setRadius(0.11f);
     fdef.shape = shape;
+    fdef.density = 0.1f;
+    fdef.restitution = 0.4f;
     bdef.position.set(position);
-    bdef.gravityScale = 9;
     bdef.type = BodyDef.BodyType.DynamicBody;
     transformComponent.body = world.createBody(bdef);
     transformComponent.body.createFixture(fdef);
+    transformComponent.body.setMassData(new MassData());
     entity.add(transformComponent);
 
     IsPlayerComponent isPlayerComponent = new IsPlayerComponent();
@@ -46,7 +48,7 @@ public class EntityFactory {
 
     TransformComponent transformComponent = new TransformComponent();
     PolygonShape rectangle = new PolygonShape();
-    rectangle.setAsBox(Gdx.graphics.getWidth() / 2, 0.25f);
+    rectangle.setAsBox(Gdx.graphics.getWidth() / 2, 0.1f);
 
     fdef.shape = rectangle;
     bdef.position.set(0,-16.25f);

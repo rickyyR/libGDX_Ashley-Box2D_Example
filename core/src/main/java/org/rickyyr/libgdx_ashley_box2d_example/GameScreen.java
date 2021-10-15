@@ -2,6 +2,7 @@ package org.rickyyr.libgdx_ashley_box2d_example;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.math.Vector2;
 import org.rickyyr.libgdx_ashley_box2d_example.tools.GameManager;
 
 public class GameScreen implements Screen {
@@ -9,6 +10,8 @@ public class GameScreen implements Screen {
   @Override
   public void render(float delta) {
 
+    GameManager.camera.zoom = 0.3f;
+    GameManager.camera.position.set(new Vector2(0, -11.3f), 0);
     GameManager.viewport.setUnitsPerPixel(1 / 32f); // 1 cm, km, or m (can decide for yourself) = 32 pix
     GameManager.viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     // Update the engine

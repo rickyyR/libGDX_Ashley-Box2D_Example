@@ -16,7 +16,7 @@ public class Lwjgl3Launcher {
 
 	private static Lwjgl3ApplicationConfiguration getDefaultConfiguration() {
 		Lwjgl3ApplicationConfiguration configuration = new Lwjgl3ApplicationConfiguration();
-		configuration.setTitle("TopdownGame");
+		configuration.setTitle("Box2D - Playground");
 		configuration.setWindowedMode(800,800);
 		configuration.setForegroundFPS(60);
 		return configuration;

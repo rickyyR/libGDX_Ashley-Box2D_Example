@@ -14,7 +14,7 @@ import org.rickyyr.libgdx_ashley_box2d_example.systems.RenderSystem;
 
 public class GameManager {
 
-  public static World world1 = new World(new Vector2(0,-1f), true);
+  public static World world1 = new World(new Vector2(0,-9f), true);
   public static OrthographicCamera camera = new OrthographicCamera();
   public static ScreenViewport viewport = new ScreenViewport(camera);
   public static Engine engine = new Engine();
