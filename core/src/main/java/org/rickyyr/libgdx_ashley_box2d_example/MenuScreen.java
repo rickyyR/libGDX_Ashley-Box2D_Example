@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import org.rickyyr.libgdx_ashley_box2d_example.tools.GameManager;
 
 //----------------------------------------------------------------------------------------------------------
 // The MenuScreen is independent of the World and Engine (for now) so it has its own render and input logic
@@ -19,7 +20,6 @@ public class MenuScreen implements Screen {
   private OrthographicCamera camera;
   private SpriteBatch batch;
   private BitmapFont font;
-  private Viewport viewport;
   private int width;
   private int height;
 
@@ -31,7 +31,6 @@ public class MenuScreen implements Screen {
 
     this.camera = new OrthographicCamera();
     this.camera.setToOrtho(false, width ,height);
-    this.viewport = new ExtendViewport(width, height, camera);
 
     this.font = new BitmapFont(); // use libGDX's default Arial font.
     this.batch = new SpriteBatch();
@@ -59,7 +58,7 @@ public class MenuScreen implements Screen {
 
   @Override
   public void resize(int width, int height) {
-    viewport.update(width, height);
+    GameManager.viewport.update(width,height);
   }
 
   @Override

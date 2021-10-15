@@ -11,7 +11,6 @@ import com.badlogic.gdx.math.Vector2;
 import org.rickyyr.libgdx_ashley_box2d_example.MenuScreen;
 import org.rickyyr.libgdx_ashley_box2d_example.TopdownGame;
 import org.rickyyr.libgdx_ashley_box2d_example.components.IsPlayerComponent;
-import org.rickyyr.libgdx_ashley_box2d_example.components.MovementComponent;
 
 //------------------------------------------------------------------------------------------------------------------
 // System for handling the users input.
@@ -20,7 +19,7 @@ import org.rickyyr.libgdx_ashley_box2d_example.components.MovementComponent;
 
 public class InputReceiverSystem extends IteratingSystem implements InputProcessor {
 
-  private ComponentMapper<MovementComponent> movementMapper = ComponentMapper.getFor(MovementComponent.class);
+
   private Vector2 playerForce;
   private TopdownGame topdownGame;
 
@@ -33,22 +32,24 @@ public class InputReceiverSystem extends IteratingSystem implements InputProcess
   @Override
   protected void processEntity(Entity entity, float deltaTime) {
 
-    playerForce = this.movementMapper.get(entity).force;
 
     if(Gdx.input.isKeyPressed(Input.Keys.W)) {
       playerForce.y += 2;
     }
     if(Gdx.input.isKeyPressed(Input.Keys.A)) {
-      playerForce.x += 2;
+      playerForce.x -= 2;
     }
     if(Gdx.input.isKeyPressed(Input.Keys.S)) {
       playerForce.y -= 2;
     }
     if(Gdx.input.isKeyPressed(Input.Keys.D)) {
-      playerForce.x -= 2;
+      playerForce.x += 2;
     }
     if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
       topdownGame.setScreen(new MenuScreen(topdownGame));
+    }
+    if(Gdx.input.isKeyPressed(Input.Keys.P)) {
+
     }
 
   }
@@ -64,13 +65,13 @@ public class InputReceiverSystem extends IteratingSystem implements InputProcess
     if(keycode == Input.Keys.W) {
       playerForce.y = 0;
     }
-    if(Gdx.input.isKeyPressed(Input.Keys.A)) {
+    if(keycode == Input.Keys.A) {
       playerForce.x = 0;
     }
-    if(Gdx.input.isKeyPressed(Input.Keys.S)) {
+    if(keycode == Input.Keys.S) {
       playerForce.y = 0;
     }
-    if(Gdx.input.isKeyPressed(Input.Keys.D)) {
+    if(keycode == Input.Keys.D) {
       playerForce.x = 0;
     }
 

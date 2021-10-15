@@ -8,6 +8,9 @@ public class GameScreen implements Screen {
 
   @Override
   public void render(float delta) {
+
+    GameManager.viewport.setUnitsPerPixel(1 / 32f); // 1 cm, km, or m (can decide for yourself) = 32 pix
+    GameManager.viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     // Update the engine
     GameManager.engine.update(Gdx.graphics.getDeltaTime());
     // Step the world. One could also step the world inside a system.
@@ -16,6 +19,7 @@ public class GameScreen implements Screen {
 
   @Override
   public void resize(int width, int height) {
+
     GameManager.viewport.update(width,height);
   }
 
