@@ -12,8 +12,8 @@ public class TopdownGame extends Game {
     // Set the first screen after start to be MenuScreen
     this.setScreen(new MenuScreen(this));
     // IMPORTANT this will create box2d world and ashley engine
-    SystemFactory.createSystems(GameManager.engine, this);
     EntityFactory.createEntities(GameManager.engine);
+    SystemFactory.createSystems(GameManager.engine, this);
   }
 
   @Override

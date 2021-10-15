@@ -12,11 +12,6 @@ public class SystemFactory {
       RenderSystem renderSystem = new RenderSystem();
       engine.addSystem(renderSystem);
 
-      // TODO: Implement movement sys for gravity?
-      //MovementSystem movementSystem = new MovementSystem();
-     // engine.addSystem(movementSystem);
-      // IMPORTANT: InputReceiverSystem has to be added AFTER MovementSystem or will not work without error.
-      // Engine will process systems and entities in order.
       InputReceiverSystem inputReceiverSystem = new InputReceiverSystem(topdownGame);
       engine.addSystem(inputReceiverSystem);
 

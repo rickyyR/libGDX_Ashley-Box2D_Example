@@ -8,9 +8,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import org.rickyyr.libgdx_ashley_box2d_example.MenuScreen;
 import org.rickyyr.libgdx_ashley_box2d_example.TopdownGame;
 import org.rickyyr.libgdx_ashley_box2d_example.components.IsPlayerComponent;
+import org.rickyyr.libgdx_ashley_box2d_example.components.TransformComponent;
+import org.rickyyr.libgdx_ashley_box2d_example.tools.GameManager;
 
 //------------------------------------------------------------------------------------------------------------------
 // System for handling the users input.
@@ -19,31 +22,35 @@ import org.rickyyr.libgdx_ashley_box2d_example.components.IsPlayerComponent;
 
 public class InputReceiverSystem extends IteratingSystem implements InputProcessor {
 
-
-  private Vector2 playerForce;
+  ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
   private TopdownGame topdownGame;
+  private Body playerBody;
 
   public InputReceiverSystem(TopdownGame topdownGame) {
     super(Family.all(IsPlayerComponent.class).get());
+    init(topdownGame);
+  }
+
+  private void init(TopdownGame topdownGame) {
     this.topdownGame = topdownGame;
+    playerBody = transformMapper.get(GameManager.engine.getEntities().get(0)).body;
     Gdx.input.setInputProcessor(this);
   }
 
   @Override
   protected void processEntity(Entity entity, float deltaTime) {
 
-
     if(Gdx.input.isKeyPressed(Input.Keys.W)) {
-      playerForce.y += 2;
+      playerBody.applyLinearImpulse(0,0.3f, playerBody.getWorldCenter().x, playerBody.getWorldCenter().y, true);
     }
     if(Gdx.input.isKeyPressed(Input.Keys.A)) {
-      playerForce.x -= 2;
+
     }
     if(Gdx.input.isKeyPressed(Input.Keys.S)) {
-      playerForce.y -= 2;
+
     }
     if(Gdx.input.isKeyPressed(Input.Keys.D)) {
-      playerForce.x += 2;
+
     }
     if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
       topdownGame.setScreen(new MenuScreen(topdownGame));
@@ -63,16 +70,16 @@ public class InputReceiverSystem extends IteratingSystem implements InputProcess
   public boolean keyUp(int keycode) {
 
     if(keycode == Input.Keys.W) {
-      playerForce.y = 0;
+      playerBody.setLinearVelocity(new Vector2(0,0));
     }
     if(keycode == Input.Keys.A) {
-      playerForce.x = 0;
+
     }
     if(keycode == Input.Keys.S) {
-      playerForce.y = 0;
+
     }
     if(keycode == Input.Keys.D) {
-      playerForce.x = 0;
+
     }
 
 

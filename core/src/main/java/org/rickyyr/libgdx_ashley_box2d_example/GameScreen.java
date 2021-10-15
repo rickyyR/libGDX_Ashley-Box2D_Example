@@ -10,8 +10,8 @@ public class GameScreen implements Screen {
   @Override
   public void render(float delta) {
 
-    GameManager.camera.zoom = 0.3f;
-    GameManager.camera.position.set(new Vector2(0, -11.3f), 0);
+    GameManager.camera.zoom = 0.5f;
+    GameManager.camera.position.set(new Vector2(0, 8f), 0);
     GameManager.viewport.setUnitsPerPixel(1 / 32f); // 1 cm, km, or m (can decide for yourself) = 32 pix
     GameManager.viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     // Update the engine

@@ -17,7 +17,7 @@ public class EntityFactory {
   private static FixtureDef fdef = new FixtureDef();
 
   public static void createEntities(Engine engine) {
-    engine.addEntity(createPlayer(GameManager.world1, new Vector2(0,0)));
+    engine.addEntity(createPlayer(GameManager.world1, new Vector2(0,5)));
     engine.addEntity(createFloor(GameManager.world1));
   }
 
@@ -29,7 +29,7 @@ public class EntityFactory {
     shape.setRadius(0.11f);
     fdef.shape = shape;
     fdef.density = 0.1f;
-    fdef.restitution = 0.4f;
+    fdef.restitution = 0.5f;
     bdef.position.set(position);
     bdef.type = BodyDef.BodyType.DynamicBody;
     transformComponent.body = world.createBody(bdef);
@@ -51,7 +51,7 @@ public class EntityFactory {
     rectangle.setAsBox(Gdx.graphics.getWidth() / 2, 0.1f);
 
     fdef.shape = rectangle;
-    bdef.position.set(0,-16.25f);
+    bdef.position.set(0,0);
     bdef.type = BodyDef.BodyType.KinematicBody;
     transformComponent.body = world.createBody(bdef);
     transformComponent.body.createFixture(fdef);
