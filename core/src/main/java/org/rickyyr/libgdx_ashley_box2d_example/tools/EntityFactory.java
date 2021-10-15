@@ -37,12 +37,32 @@ public class EntityFactory {
     transformComponent.body = world.createBody(bdef);
     transformComponent.body.createFixture(fdef);
     transformComponent.body.setMassData(new MassData());
+
     entity.add(transformComponent);
 
     IsPlayerComponent isPlayerComponent = new IsPlayerComponent();
     entity.add(isPlayerComponent);
 
     return entity;
+  }
+
+  public static void spawnSimpleBall(World world, Vector2 position) {
+
+    Entity entity = new Entity();
+    TransformComponent transformComponent = new TransformComponent();
+    CircleShape shape = new CircleShape();
+    shape.setRadius(0.11f);
+    fdef.shape = shape;
+    fdef.density = 8.8f;
+    fdef.restitution = 0.5f;
+    bdef.position.set(position);
+    bdef.type = BodyDef.BodyType.DynamicBody;
+    transformComponent.body = world.createBody(bdef);
+    transformComponent.body.createFixture(fdef);
+    transformComponent.body.setMassData(new MassData());
+    entity.add(transformComponent);
+
+    GameManager.engine.addEntity(entity);
   }
 
   public static Entity createFloor(World world) {
@@ -54,7 +74,7 @@ public class EntityFactory {
 
     fdef.shape = rectangle;
     bdef.position.set(0,0);
-    bdef.type = BodyDef.BodyType.KinematicBody;
+    bdef.type = BodyDef.BodyType.StaticBody;
     transformComponent.body = world.createBody(bdef);
     transformComponent.body.createFixture(fdef);
     entity.add(transformComponent);
@@ -71,7 +91,7 @@ public class EntityFactory {
 
     fdef.shape = rectangle;
     bdef.position.set(10, 1.31f);
-    bdef.type = BodyDef.BodyType.KinematicBody;
+    bdef.type = BodyDef.BodyType.StaticBody;
     transformComponent.body = world.createBody(bdef);
     transformComponent.body.createFixture(fdef);
     entity.add(transformComponent);

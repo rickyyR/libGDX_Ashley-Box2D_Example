@@ -40,5 +40,6 @@ public class GameManager {
 
   public static void dispose() {
     world1.dispose();
+    engine.removeAllEntities();
   }
 }

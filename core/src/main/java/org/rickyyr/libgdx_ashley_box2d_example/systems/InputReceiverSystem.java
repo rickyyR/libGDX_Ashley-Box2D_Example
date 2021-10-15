@@ -6,10 +6,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
-import org.rickyyr.libgdx_ashley_box2d_example.MenuScreen;
 import org.rickyyr.libgdx_ashley_box2d_example.TopdownGame;
 import org.rickyyr.libgdx_ashley_box2d_example.components.TransformComponent;
+import org.rickyyr.libgdx_ashley_box2d_example.tools.EntityFactory;
 import org.rickyyr.libgdx_ashley_box2d_example.tools.GameManager;
 
 //------------------------------------------------------------------------------------------------------------------
@@ -41,7 +42,7 @@ public class InputReceiverSystem extends EntitySystem implements InputProcessor 
       playerBody.applyLinearImpulse(0,0.3f, playerBody.getWorldCenter().x, playerBody.getWorldCenter().y, true);
     }
     if(Gdx.input.isKeyPressed(Input.Keys.A)) {
-     forceCounter += 6 *  deltaTime;
+      forceCounter += 6 *  deltaTime;
     }
     if(Gdx.input.isKeyPressed(Input.Keys.S)) {
 
@@ -49,17 +50,14 @@ public class InputReceiverSystem extends EntitySystem implements InputProcessor 
     if(Gdx.input.isKeyPressed(Input.Keys.D)) {
       forceCounter += 6 *  deltaTime;
     }
-    if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
-      topdownGame.setScreen(new MenuScreen(topdownGame));
-    }
+
     if(Gdx.input.isKeyPressed(Input.Keys.P)) {
 
-    }
-  }
+      Vector3 touchPos = new Vector3(Gdx.input.getX(), Gdx.input.getY(),  0);
+      GameManager.camera.unproject(touchPos);
+      EntityFactory.spawnSimpleBall(GameManager.world1, new Vector2(touchPos.x, touchPos.y));
 
-  @Override
-  public boolean keyDown(int keycode) {
-    return false;
+    }
   }
 
   @Override
@@ -90,6 +88,17 @@ public class InputReceiverSystem extends EntitySystem implements InputProcessor 
   }
 
   @Override
+  public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+    return false;
+  }
+
+
+  @Override
+  public boolean keyDown(int keycode) {
+    return false;
+  }
+
+  @Override
   public boolean keyTyped(char character) {
     return false;
   }
@@ -99,10 +108,6 @@ public class InputReceiverSystem extends EntitySystem implements InputProcessor 
     return false;
   }
 
-  @Override
-  public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-    return false;
-  }
 
   @Override
   public boolean touchDragged(int screenX, int screenY, int pointer) {
