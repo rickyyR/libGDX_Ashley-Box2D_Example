@@ -39,8 +39,6 @@ public class RenderSystem extends IteratingSystem {
 
     this.debugRenderer.render(GameManager.world1, GameManager.camera.combined);
 
-    System.out.println(GameManager.camera.viewportWidth);
-
   }
 
 }

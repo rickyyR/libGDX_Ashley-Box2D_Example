@@ -25,6 +25,7 @@ public class InputReceiverSystem extends IteratingSystem implements InputProcess
   ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
   private TopdownGame topdownGame;
   private Body playerBody;
+  private float forceCounter = 0;
 
   public InputReceiverSystem(TopdownGame topdownGame) {
     super(Family.all(IsPlayerComponent.class).get());
@@ -44,13 +45,13 @@ public class InputReceiverSystem extends IteratingSystem implements InputProcess
       playerBody.applyLinearImpulse(0,0.3f, playerBody.getWorldCenter().x, playerBody.getWorldCenter().y, true);
     }
     if(Gdx.input.isKeyPressed(Input.Keys.A)) {
-
+     forceCounter += 6 *  deltaTime;
     }
     if(Gdx.input.isKeyPressed(Input.Keys.S)) {
 
     }
     if(Gdx.input.isKeyPressed(Input.Keys.D)) {
-
+      forceCounter += 6 *  deltaTime;
     }
     if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
       topdownGame.setScreen(new MenuScreen(topdownGame));
@@ -58,6 +59,7 @@ public class InputReceiverSystem extends IteratingSystem implements InputProcess
     if(Gdx.input.isKeyPressed(Input.Keys.P)) {
 
     }
+
 
   }
 
@@ -70,16 +72,24 @@ public class InputReceiverSystem extends IteratingSystem implements InputProcess
   public boolean keyUp(int keycode) {
 
     if(keycode == Input.Keys.W) {
-      playerBody.setLinearVelocity(new Vector2(0,0));
+      playerBody.setLinearVelocity(new Vector2(playerBody.getLinearVelocity().x,0));
     }
     if(keycode == Input.Keys.A) {
-
+      playerBody.applyLinearImpulse(0 - forceCounter,0.5f,playerBody.getWorldCenter().x,
+        playerBody.getWorldCenter().y, true);
+      forceCounter = 0;
     }
     if(keycode == Input.Keys.S) {
 
     }
     if(keycode == Input.Keys.D) {
-
+      playerBody.applyLinearImpulse(0 + forceCounter,5,playerBody.getWorldCenter().x,
+        playerBody.getWorldCenter().y, true);
+      forceCounter = 0;
+    }
+    if(keycode == Input.Keys.R) {
+      playerBody.setTransform(0,2,0);
+      playerBody.setLinearVelocity(0,0);
     }
 
 
