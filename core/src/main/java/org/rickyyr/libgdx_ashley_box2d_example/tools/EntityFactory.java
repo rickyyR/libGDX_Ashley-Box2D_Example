@@ -26,7 +26,7 @@ public class EntityFactory {
     CircleShape shape = new CircleShape();
     shape.setRadius(0.11f);
     fdef.shape = shape;
-    fdef.friction = 0.13f;
+    fdef.density = 8.8f;
     fdef.restitution = 0.5f;
     bdef.position.set(position);
     bdef.type = BodyDef.BodyType.DynamicBody;
