@@ -37,9 +37,9 @@ public class GameScreen implements Screen {
 
     GameManager.viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     // Update the engine
-    GameManager.engine.update(Gdx.graphics.getDeltaTime());
+    GameManager.engine.update(delta);
     // Step the world. One could also step the world inside a system.
-    GameManager.world1.step(1 / 60f, 6, 2);
+    GameManager.world1.step(delta, 6, 2);
 
     if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
       topdownGame.setScreen(new MenuScreen(topdownGame));
