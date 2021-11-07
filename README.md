@@ -1,5 +1,5 @@
 # libGDX-Ashley-Box2D-EXAMPLE
-An example (mostly for myself) on how to structure a libGDX project with Ashley and Box2D.
+An example (mostly for myself) on how to structure a [libGDX](https://github.com/libgdx/libgdx) project with [Ashley](https://github.com/libgdx/ashley) and [Box2D](https://box2d.org/).
 
 ### Controls:
 Hold A or D to charge the ball, release to shoot. R to reset position. Hold P to spawn balls at pointer. ESC to enter the menu and reset the level.
