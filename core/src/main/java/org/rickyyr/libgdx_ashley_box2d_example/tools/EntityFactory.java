@@ -12,7 +12,7 @@ import org.rickyyr.libgdx_ashley_box2d_example.components.TransformComponent;
 // This is a helper class for creating all the entities. It is used by GameManager.setupGame().
 //---------------------------------------------------------------------------------------------
 
-public class EntityFactory {
+public abstract class EntityFactory {
 
   private static BodyDef bdef = new BodyDef();
   private static FixtureDef fdef = new FixtureDef();

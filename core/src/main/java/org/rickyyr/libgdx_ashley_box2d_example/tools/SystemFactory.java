@@ -9,7 +9,7 @@ import org.rickyyr.libgdx_ashley_box2d_example.systems.RenderSystem;
 // This is a helper class for creating all the systems. It is used by GameManager.setupGame().
 //---------------------------------------------------------------------------------------------
 
-public class SystemFactory {
+public abstract class SystemFactory {
 
   public static void createAllSystems(Engine engine, TopdownGame topdownGame) {
 

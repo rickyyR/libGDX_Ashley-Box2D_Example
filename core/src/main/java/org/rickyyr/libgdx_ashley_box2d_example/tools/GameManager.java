@@ -14,7 +14,7 @@ import org.rickyyr.libgdx_ashley_box2d_example.components.IsPlayerComponent;
 // Class for setting up the Game and convenient access to World, Engine and Viewport
 //-----------------------------------------------------------------------------------
 
-public class GameManager {
+public abstract class GameManager {
 
   public static World world1;
   public static OrthographicCamera camera = new OrthographicCamera();
