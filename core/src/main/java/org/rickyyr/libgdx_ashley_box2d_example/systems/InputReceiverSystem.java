@@ -1,6 +1,5 @@
 package org.rickyyr.libgdx_ashley_box2d_example.systems;
 
-import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -9,9 +8,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
 import org.rickyyr.libgdx_ashley_box2d_example.TopdownGame;
-import org.rickyyr.libgdx_ashley_box2d_example.components.TransformComponent;
 import org.rickyyr.libgdx_ashley_box2d_example.tools.EntityFactory;
 import org.rickyyr.libgdx_ashley_box2d_example.tools.GameManager;
+import org.rickyyr.libgdx_ashley_box2d_example.tools.Mappers;
 
 //------------------------------------------------------------------------------------------------------------------
 // System for handling the users input.
@@ -20,7 +19,6 @@ import org.rickyyr.libgdx_ashley_box2d_example.tools.GameManager;
 
 public class InputReceiverSystem extends EntitySystem implements InputProcessor {
 
-  ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
   private TopdownGame topdownGame;
   private Body playerBody;
   private float forceCounter = 0;
@@ -31,7 +29,7 @@ public class InputReceiverSystem extends EntitySystem implements InputProcessor 
 
   private void init(TopdownGame topdownGame) {
     this.topdownGame = topdownGame;
-    playerBody = transformMapper.get(GameManager.getPlayerEntity()).body;
+    playerBody = Mappers.transformMapper.get(GameManager.getPlayerEntity()).body;
     Gdx.input.setInputProcessor(this);
   }
 

@@ -28,11 +28,6 @@ public class GameScreen implements Screen {
   }
 
   @Override
-  public void show() {
-
-  }
-
-  @Override
   public void render(float delta) {
 
     GameManager.viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -54,22 +49,20 @@ public class GameScreen implements Screen {
   }
 
   @Override
-  public void pause() {
-
-  }
+  public void pause() {}
 
   @Override
-  public void resume() {
-
-  }
+  public void show() {}
 
   @Override
-  public void hide() {
+  public void resume() {}
 
-  }
+  @Override
+  public void hide() {}
 
   @Override
   public void dispose() {
     GameManager.dispose();
   }
+
 }
