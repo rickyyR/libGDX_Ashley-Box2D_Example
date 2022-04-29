@@ -7,12 +7,12 @@ My solution is to use helper methods which will create an object inside the Box2
 ### Controls:
 Hold A or D to charge the ball, release to shoot. R to reset position. Hold P to spawn balls at pointer. ESC to enter the menu and reset the level.
 
-# [Components](https://github.com/rickyyR/libGDX-Ashley-Box2D-EXAMPLE/tree/master/core/src/main/java/org/rickyyr/libgdx_ashley_box2d_example/components)
+### [Components](https://github.com/rickyyR/libGDX-Ashley-Box2D-EXAMPLE/tree/master/core/src/main/java/org/rickyyr/libgdx_ashley_box2d_example/components)
 Data bags without any logic, used by systems.
 
-# [Systems](https://github.com/rickyyR/libGDX-Ashley-Box2D-EXAMPLE/tree/master/core/src/main/java/org/rickyyr/libgdx_ashley_box2d_example/systems)
+### [Systems](https://github.com/rickyyR/libGDX-Ashley-Box2D-EXAMPLE/tree/master/core/src/main/java/org/rickyyr/libgdx_ashley_box2d_example/systems)
 Systems are the logic of the game world (rendering, physics, combat, handling user input e.t.c).
 
-# [Tools](https://github.com/rickyyR/libGDX-Ashley-Box2D-EXAMPLE/tree/master/core/src/main/java/org/rickyyr/libgdx_ashley_box2d_example/systems)
+### [Tools](https://github.com/rickyyR/libGDX-Ashley-Box2D-EXAMPLE/tree/master/core/src/main/java/org/rickyyr/libgdx_ashley_box2d_example/systems)
 The classes inside the Tools folder are convenience classes like a class for creating all the entities and one for creating the systems. 
 There is also GameManager for passing reusable objects like Ashley-Engine and Box2d-World or the Camera around.
